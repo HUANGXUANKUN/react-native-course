@@ -17,7 +17,7 @@ function count(arr, fn) {
 
 function Todo(name) {
   this.name = name || 'New TODO'
-  this.checked = false
+  this.checked = false //set defalut checkbox to uncheck
   this.element = null
   this.checkbox = null
 }
@@ -70,8 +70,8 @@ function renderTodo(todo) {
 function render() {
   list.innerHTML = ''
   todos.map(renderTodo).forEach(todo => list.appendChild(todo))
-  uncheckedCountDiv.innerHTML = count(todos, todo => !todo.checked)
-  itemCountDiv.innerHTML = todos.length
+  uncheckedCountDiv.innerHTML = count(todos, todo => !todo.checked) //use reduce to update unchecked count
+  itemCountDiv.innerHTML = todos.length //undate item count  
   return false
 }
 
