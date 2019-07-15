@@ -12,7 +12,7 @@ const uncheckedCountDiv = document.getElementById('unchecked-count')
 let todos = []
 
 function count(arr, fn) {
-  return arr.reduce((acc, next) => fn(next) ? acc + 1 : acc, 0)
+  return arr.reduce((accumulator, next) => fn(next) ? accumulator + 1 : accumulator, 0)
 }
 
 function Todo(name) {
@@ -35,10 +35,10 @@ function renderTodo(todo) {
   if (todo.element) return todo.element
 
   const deleteButton = document.createElement('button')
-  deleteButton.innerHTML = '&times'
+  deleteButton.innerHTML = '&times' //x label
   deleteButton.className = classNames.DELETE_BUTTON
   // keep reference of todo on button so that it can be dereferenced in the callback
-  deleteButton.onclick = removeTodo
+  deleteButton.onclick = removeTodo //reference to removeTodo() 
   deleteButton.todoRef = todo
 
   const checkbox = document.createElement('input')
@@ -69,7 +69,8 @@ function renderTodo(todo) {
 
 function render() {
   list.innerHTML = ''
-  todos.map(renderTodo).forEach(todo => list.appendChild(todo))
+  // todos.map(renderTodo).forEach(todo => list.appendChild(todo))
+  todos.map(renderTodo).forEach(todo => list.appendChild(todo)) //append each todo to list
   uncheckedCountDiv.innerHTML = count(todos, todo => !todo.checked) //use reduce to update unchecked count
   itemCountDiv.innerHTML = todos.length //undate item count  
   return false
